@@ -1,0 +1,66 @@
+{
+  "users": [],
+  "profiles": [
+    {
+      "id": "1",
+      "userId": "1",
+      "companyName": "مجموعة الجزائر للمقاولات",
+      "city": "الجزائر العاصمة",
+      "rating": 4.9,
+      "reviewsCount": 120,
+      "services": [
+        "تأجير معدات",
+        "صيانة سريعة"
+      ]
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "companyName": "المهندس عثمان للتقنية",
+      "city": "وهران",
+      "rating": 4.7,
+      "reviewsCount": 85,
+      "services": [
+        "كهرباء صناعية",
+        "متاح حاليا"
+      ]
+    }
+  ],
+  "equipment": [
+    {
+      "id": "eq_1",
+      "ownerId": "1",
+      "title": "Hydraulic Excavator",
+      "category": "Heavy equipment",
+      "description": "Available with certified operator and daily maintenance log.",
+      "pricePerDay": 25000,
+      "wilaya": "Algiers",
+      "available": true,
+      "status": "available",
+      "rating": 4.8,
+      "createdAt": "2026-05-01T10:00:00.000Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "pr_1",
+      "clientId": "1",
+      "ownerId": "1",
+      "title": "Villa foundation work",
+      "description": "Foundation excavation, concrete pouring, and progress tracking.",
+      "wilaya": "Oran",
+      "location": "Oran",
+      "budget": 1200000,
+      "status": "active",
+      "createdAt": "2026-05-12T09:00:00.000Z"
+    }
+  ],
+  "conversations": [],
+  "messages": [],
+  "notifications": [],
+  "quotes": [],
+  "contracts": [],
+  "payments": [],
+  "reviews": [],
+  "activityLogs": []
+}
