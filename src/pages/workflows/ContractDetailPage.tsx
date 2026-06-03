@@ -123,8 +123,8 @@ export function ContractDetailPage() {
       });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["contract", contractId]);
-      queryClient.invalidateQueries(["contracts"]);
+      queryClient.invalidateQueries({ queryKey: ["contract", contractId] });
+      queryClient.invalidateQueries({ queryKey: ["contracts"] });
       toast.success("تم تحديث حالة العقد بنجاح");
     },
     onError: (error) => {
@@ -167,8 +167,8 @@ export function ContractDetailPage() {
       return resourcesService.updateContract(contract.id, payload as any);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["contract", contractId]);
-      queryClient.invalidateQueries(["contracts"]);
+      queryClient.invalidateQueries({ queryKey: ["contract", contractId] });
+      queryClient.invalidateQueries({ queryKey: ["contracts"] });
       toast.success(t("editContractSuccess"));
       setIsEditing(false);
     },
@@ -183,8 +183,8 @@ export function ContractDetailPage() {
       return resourcesService.updateContract(contract.id, { contractStatus: "completed", status: "completed", updatedAt: new Date().toISOString() });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["contract", contractId]);
-      queryClient.invalidateQueries(["contracts"]);
+      queryClient.invalidateQueries({ queryKey: ["contract", contractId] });
+      queryClient.invalidateQueries({ queryKey: ["contracts"] });
       toast.success("تم اعتماد العقد");
     },
     onError: (err) => {
@@ -508,11 +508,11 @@ export function ContractDetailPage() {
               {alreadySigned ? (
                 <div className="rounded-3xl bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">تم توقيعك بالفعل</div>
               ) : canSign ? (
-                <Button className="w-full rounded-3xl py-4" onClick={() => mutation.mutate()} disabled={mutation.isLoading}>
+                <Button className="w-full rounded-3xl py-4" onClick={() => mutation.mutate()} disabled={mutation.isPending}>
                   {isClient ? "موافق على العقد" : "توقيع العقد"}
                 </Button>
               ) : clientSigned && providerSignedFlag && status !== "completed" ? (
-                <Button className="w-full rounded-3xl py-4 bg-brand-blue text-white" onClick={() => completeMutation.mutate()} disabled={completeMutation.isLoading}>
+                <Button className="w-full rounded-3xl py-4 bg-brand-blue text-white" onClick={() => completeMutation.mutate()} disabled={completeMutation.isPending}>
                   اعتماد العقد
                 </Button>
               ) : (

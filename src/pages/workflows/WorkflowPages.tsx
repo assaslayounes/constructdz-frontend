@@ -111,7 +111,7 @@ export function ContractsPage() {
   const queryClient = useQueryClient();
   const query = useQuery({ queryKey: ["contracts"], queryFn: resourcesService.contracts });
   const mutation = useMutation({
-    mutationFn: ({ id, status }: { id: string; status: ContractStatus }) => resourcesService.updateContract(id, { status, signedAt: new Date().toISOString() }),
+    mutationFn: ({ id, status }: { id: string; status: ContractStatus }) => resourcesService.updateContract(id, { status }),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["contracts"] })
   });
 

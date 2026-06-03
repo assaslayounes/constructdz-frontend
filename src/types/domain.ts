@@ -7,7 +7,6 @@ export type ExecutionStatus = "not_started" | "in_progress" | "completed" | "can
 export type NotificationType = "message" | "quote" | "contract" | "payment" | "review" | "project";
 
 export type ContractSignatureRole = "project_owner" | "service_provider" | "equipment_owner";
-export type ContractStatus = "draft" | "pending_signature" | "signed" | "completed" | "cancelled";
 
 export interface ContractSignature {
   userId: string;
