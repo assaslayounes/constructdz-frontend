@@ -37,7 +37,7 @@ export function LoginPage() {
     <div className="min-h-screen bg-brand-bg flex flex-col">
       <AuthBrand />
       <div className="flex-1 flex items-center justify-center pb-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="auth-container -mt-32 rounded-[20px] border border-brand-border bg-white px-5 py-8 shadow-xl sm:px-10 sm:py-12 w-full max-w-md">
+        <form onSubmit={handleSubmit(onSubmit)} className="auth-container -mt-10 rounded-[20px] border border-brand-border bg-white px-5 py-8 shadow-xl sm:px-10 sm:py-12 w-full max-w-md">
           <h2 className="mb-6 text-center text-3xl text-[#684431] sm:mb-8 sm:text-4xl">تسجيل الدخول</h2>
           <label className="mb-2 block text-right text-base text-[#4a2d20] sm:mb-3 sm:text-lg">البريد الإلكتروني أو رقم الهاتف</label>
           <Input {...register("identifier")} icon={<Mail />} placeholder="example@mail.com" />
