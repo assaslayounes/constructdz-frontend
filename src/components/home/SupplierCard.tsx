@@ -1,6 +1,5 @@
-import { MapPin, Settings, Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
 
 interface Props {
   title: string;
@@ -11,63 +10,58 @@ interface Props {
   tags: string[];
 }
 
-export function SupplierCard({
-  title,
-  image,
-  location,
-  rating,
-  reviews,
-  tags,
-}: Props) {
+export function SupplierCard({ title, image, location, rating, reviews, tags }: Props) {
   return (
-    <article className="soft-card relative flex min-h-[210px] flex-col overflow-hidden rounded-2xl border border-slate-200/60 bg-white p-0 shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] sm:min-h-[220px]">
-      {/* Top Section */}
-      <div className="relative h-[95px] bg-slate-700 sm:h-[105px]">
-        <Settings className="absolute right-5 top-5 size-5 text-white/80" />
-      </div>
+    <article className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-200 hover:shadow-md">
 
-      {/* Profile Image */}
-      <div className="absolute left-1/2 top-[95px] z-10 -translate-x-1/2 -translate-y-1/2 sm:top-[105px]">
-        <img
-          src={image}
-          alt={title}
-          className="size-24 rounded-full border-4 border-white object-cover shadow-lg ring-1 ring-black/10 sm:size-28"
+      {/* Cover banner */}
+      <div className="relative h-20 bg-gradient-to-br from-slate-700 to-slate-800 sm:h-24">
+        {/* Decorative pattern */}
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "16px 16px" }}
         />
       </div>
 
+      {/* Avatar — centered, overlapping cover */}
+      <div className="relative flex justify-center">
+        <div className="-mt-10 h-20 w-20 overflow-hidden rounded-full border-4 border-white shadow-md sm:-mt-12 sm:h-24 sm:w-24">
+          <img
+            src={image}
+            alt={title}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
       {/* Content */}
-      <div className="flex flex-1 flex-col bg-white px-5 pb-5 pt-16 text-right sm:px-6 sm:pb-6 sm:pt-20">
+      <div className="flex flex-1 flex-col px-4 pb-4 pt-2 text-right sm:px-5 sm:pb-5 sm:pt-3">
+
         {/* Name */}
-        <h3 className="text-center text-lg font-extrabold leading-7 text-slate-950 sm:text-xl">
+        <h3 className="text-center text-base font-extrabold leading-snug text-neutral-900 sm:text-lg">
           {title}
         </h3>
 
-        {/* Rating */}
-        <div className="mt-3 flex items-center justify-center gap-3 rounded-full bg-orange-100/60 px-3 py-2">
-          <span className="flex items-center gap-1 text-sm font-bold text-amber-500">
-            <Star className="size-4 fill-current" />
-            {rating}
-          </span>
-
-          <span className="text-xs font-semibold text-slate-500">
-            {reviews}+ تقييم
-          </span>
+        {/* Rating row */}
+        <div className="mt-2 flex items-center justify-center gap-3">
+          <div className="flex items-center gap-1 text-sm font-bold text-amber-500">
+            <Star className="size-3.5 fill-current sm:size-4" />
+            <span>{rating}</span>
+          </div>
+          <span className="h-3 w-px bg-neutral-200" />
+          <span className="text-xs text-neutral-500">{reviews}+ تقييم</span>
         </div>
 
-        {/* Skills */}
-        <div className="mt-4">
-          <div className="mb-2 text-sm font-extrabold text-slate-900">
-            المهارات
-          </div>
-
-          <div className="flex flex-wrap justify-end gap-2">
+        {/* Tags */}
+        {tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap justify-center gap-1.5">
             {tags.map((tag, i) => (
               <span
                 key={tag}
                 className={cn(
-                  "rounded-full px-3 py-1 text-xs font-bold",
+                  "rounded-full px-2.5 py-0.5 text-[11px] font-semibold sm:text-xs",
                   i % 2 === 0
-                    ? "bg-orange-50 text-orange-600"
+                    ? "bg-amber-50 text-amber-700"
                     : "bg-blue-50 text-blue-700"
                 )}
               >
@@ -75,38 +69,21 @@ export function SupplierCard({
               </span>
             ))}
           </div>
-        </div>
-
-        {/* About */}
-        <div className="mt-4">
-          <p className="text-sm leading-6 text-slate-600">
-            حرفي محترف يقدّم خدمات عالية الجودة بإتقان وخبرة، ملتزم بالدقة
-            والمواعيد ورضا العملاء، ويضمن تنفيذ الأعمال بأفضل المعايير.
-          </p>
-        </div>
+        )}
 
         {/* Location */}
-        <div className="mt-4">
-          <h4 className="mb-1 text-sm font-extrabold text-slate-900">
-            الموقع
-          </h4>
-
-          <div className="flex items-center justify-end gap-1 text-sm text-slate-600">
-            <MapPin className="size-4 shrink-0 text-slate-500" />
-            <span className="truncate">{location}</span>
-          </div>
+        <div className="mt-3 flex items-center justify-center gap-1 text-xs text-neutral-500">
+          <MapPin className="size-3.5 shrink-0 sm:size-4" />
+          <span className="truncate">{location}</span>
         </div>
 
-        {/* Action */}
-        <div className="mt-auto pt-4">
-          <a
-  href="#"
-  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500/80 px-4 py-3 text-center text-sm font-bold text-white backdrop-blur-sm transition-all duration-200 hover:bg-orange-500"
->
-  <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
-  رجوع
-</a>
-        </div>
+        {/* CTA */}
+        <a
+          href="#"
+          className="mt-4 flex w-full items-center justify-center rounded-xl bg-amber-500 py-2.5 text-center text-sm font-bold text-white transition-colors hover:bg-amber-600 active:scale-[.98]"
+        >
+          عرض التفاصيل
+        </a>
       </div>
     </article>
   );

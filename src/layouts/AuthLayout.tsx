@@ -8,7 +8,7 @@ export function AuthLayout() {
   const isStandaloneRegisterStep = location.pathname === "/register/personal";
 
   return (
-    <main className={`mobile-shell min-h-screen overflow-x-hidden ${isStandaloneRegisterStep ? "" : "pb-24 pt-[126px] lg:pt-20"}`}>
+    <main className={`mobile-shell min-h-screen overflow-x-hidden ${isStandaloneRegisterStep ? "" : "pb-16 pt-16 lg:pt-[72px]"}`}>
       {!isStandaloneRegisterStep && <Navbar />}
       <Outlet />
       {!isStandaloneRegisterStep && <Footer />}

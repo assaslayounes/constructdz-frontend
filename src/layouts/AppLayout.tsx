@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 
 export function AppLayout() {
   return (
-    <main className="app-shell relative min-h-screen pt-[126px] lg:pt-20">
+    <main className="app-shell relative min-h-screen pb-[60px] pt-16 lg:pb-0 lg:pt-[72px]">
       <Navbar />
       <Outlet />
       <Footer />
