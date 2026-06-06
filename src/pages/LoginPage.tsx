@@ -34,33 +34,84 @@ export function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-bg flex flex-col">
+    <div dir="rtl" className="min-h-screen bg-[#fff7f2] text-[#4a2d20]">
       <AuthBrand />
-      <div className="flex-1 flex items-center justify-center pb-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="auth-container -mt-10 rounded-[20px] border border-brand-border bg-white px-5 py-8 shadow-xl sm:px-10 sm:py-12 w-full max-w-md">
-          <h2 className="mb-6 text-center text-3xl text-[#684431] sm:mb-8 sm:text-4xl">تسجيل الدخول</h2>
-          <label className="mb-2 block text-right text-base text-[#4a2d20] sm:mb-3 sm:text-lg">البريد الإلكتروني أو رقم الهاتف</label>
-          <Input {...register("identifier")} icon={<Mail />} placeholder="example@mail.com" />
+
+      <main className="relative z-10 flex flex-col items-center px-5 pb-8">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="-mt-10 w-full max-w-[560px] rounded-[20px] border border-[#e7bfa8] bg-white px-10 pb-10 pt-11 shadow-[0_4px_16px_rgba(104,68,49,0.12)] sm:px-10 sm:py-12"
+        >
+          <h2 className="mb-10 text-center text-[42px] font-light leading-none text-[#684431] sm:mb-8 sm:text-4xl">
+            تسجيل الدخول
+          </h2>
+
+          <label className="mb-4 block text-right text-[24px] font-normal leading-none text-[#4a2d20] sm:mb-3 sm:text-lg">
+            البريد الإلكتروني أو رقم الهاتف
+          </label>
+          <Input
+            {...register("identifier")}
+            icon={<Mail className="size-8 text-[#8b6d5c]" />}
+            placeholder="example@mail.com"
+            className="h-20 rounded-xl border-[#e3bda6] bg-[#fffaf7] px-6 text-center text-[28px] text-slate-500 placeholder:text-slate-500 focus-visible:ring-brand-blue/30 sm:h-14 sm:text-xl"
+          />
           {errors.identifier && <p className="mt-2 text-sm text-red-600">{errors.identifier.message}</p>}
-          <div className="mt-5 flex items-center justify-between text-sm sm:mt-6 sm:text-base">
-            <a className="text-brand-blue" href="#">نسيت كلمة المرور؟</a>
+
+          <div className="mb-4 mt-11 flex items-center justify-between text-[21px] sm:mt-6 sm:text-base">
+            <a className="font-normal text-brand-blue underline-offset-4 hover:underline" href="#">
+              نسيت كلمة المرور؟
+            </a>
             <label className="text-[#4a2d20]">كلمة المرور</label>
           </div>
-          <Input {...register("password")} type="password" icon={<Lock />} placeholder="••••••••" />
+          <Input
+            {...register("password")}
+            type="password"
+            icon={<Lock className="size-8 text-[#8b6d5c]" />}
+            placeholder="••••••••"
+            className="h-20 rounded-xl border-[#e3bda6] bg-[#fffaf7] px-6 text-center text-[28px] tracking-[0.35em] text-slate-500 placeholder:text-slate-500 focus-visible:ring-brand-blue/30 sm:h-14 sm:text-xl"
+          />
           {errors.password && <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>}
-          <Button disabled={login.isPending} className="mt-6 h-12 w-full rounded-xl text-lg sm:mt-8 sm:h-14 sm:text-xl">{login.isPending ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}</Button>
-          <p className="mt-6 text-center text-sm sm:mt-8 sm:text-base">ليس لديك حساب؟</p>
-          <Button asChild variant="outline" className="mt-3 h-12 w-full rounded-xl text-lg sm:mt-4 sm:h-14 sm:text-xl">
+
+          <Button
+            disabled={login.isPending}
+            className="mt-10 h-[78px] w-full rounded-xl bg-[#ff7a00] text-[28px] font-medium text-white shadow-[0_8px_14px_rgba(255,122,0,0.28)] transition-all hover:bg-[#f06f00] sm:mt-8 sm:h-14 sm:text-xl"
+          >
+            {login.isPending ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
+          </Button>
+
+          <p className="mt-14 text-center text-[22px] text-[#4a2d20] sm:mt-8 sm:text-base">
+            ليس لديك حساب؟
+          </p>
+          <Button
+            asChild
+            variant="outline"
+            className="mt-8 h-[78px] w-full rounded-xl border-brand-blue bg-white text-[28px] font-medium text-brand-blue hover:bg-brand-blue/5 sm:mt-4 sm:h-14 sm:text-xl"
+          >
             <Link to="/register/type">إنشاء حساب جديد</Link>
           </Button>
         </form>
-      </div>
 
-      <div className="mx-auto mb-8 w-full max-w-md flex items-center gap-3 rounded-[18px] border border-black/10 bg-white px-4 py-4 text-right sm:gap-5 sm:px-6 sm:py-5">
-        <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-[#9aa0ff] text-blue-950 sm:size-14"><ShieldCheck /></div>
-        <div><h3 className="text-base sm:text-lg">آمن ومعتمد</h3><p className="mt-1 text-sm leading-5 sm:text-base sm:leading-6">بيانات مشاريعك محمية بأحدث تقنيات التشفير.</p></div>
-      </div>
-      <footer className="pb-4 text-center text-sm text-[#8f7667] sm:pb-6 sm:text-base">ConstructDZ 2024 © جميع الحقوق محفوظة</footer>
+        <div className="mt-20 flex w-full max-w-[560px] items-center gap-5 rounded-[18px] border border-[#f0dfd6] bg-white/80 px-7 py-7 text-right shadow-[0_2px_8px_rgba(104,68,49,0.04)] sm:mt-12 sm:gap-5 sm:px-6 sm:py-5">
+          <div className="grid size-16 shrink-0 place-items-center rounded-xl bg-[#9aa0ff] text-blue-950 sm:size-14">
+            <ShieldCheck className="size-9 sm:size-7" />
+          </div>
+          <div>
+            <h3 className="text-[27px] font-normal leading-tight text-[#2f2119] sm:text-lg">
+              آمن ومعتمد
+            </h3>
+            <p className="mt-3 text-[18px] leading-8 text-[#2f2119] sm:text-base sm:leading-6">
+              بيانات مشاريعك محمية بأحدث تقنيات التشفير العالمية.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer className="pb-6 pt-8 text-center text-[22px] text-[#8f7667] sm:pb-6 sm:text-base">
+        <div className="mx-auto mb-6 grid size-9 place-items-center rounded-sm bg-slate-800 text-xs text-white shadow-sm">
+          🇩🇿
+        </div>
+        جميع الحقوق محفوظة © 2024 إنجاز 24
+      </footer>
     </div>
   );
 }

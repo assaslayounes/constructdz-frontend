@@ -136,22 +136,21 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
           scrolled
-            ? "border-b border-neutral-200/80 bg-white/97 shadow-sm backdrop-blur-xl"
-            : "border-b border-neutral-100 bg-white/90 backdrop-blur-md"
+            ? "border-b border-amber-100/80 bg-white/95 shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl lg:border-neutral-200/80 lg:bg-white/[0.97] lg:shadow-sm"
+            : "border-b border-white/70 bg-white/85 shadow-[0_6px_24px_rgba(15,23,42,0.05)] backdrop-blur-xl lg:border-neutral-100 lg:bg-white/90 lg:shadow-none lg:backdrop-blur-md"
         )}
       >
-        <div className="mx-auto flex h-16 w-full items-center justify-between gap-3 px-4 sm:max-w-screen-sm sm:px-5 md:max-w-screen-md lg:h-[72px] lg:max-w-screen-lg lg:px-8 xl:max-w-screen-xl 2xl:max-w-screen-2xl">
-
+        <div className="mx-auto flex h-[76px] w-full items-center justify-between gap-3 px-4 sm:h-[76px] sm:max-w-screen-sm sm:px-5 md:max-w-screen-md lg:h-[72px] lg:max-w-screen-lg lg:px-8 xl:max-w-screen-xl 2xl:max-w-screen-2xl">
           {/* Logo */}
           <Link
             to="/"
             aria-label={t("home")}
-            className="flex min-w-0 items-center gap-2.5 rounded-xl px-1 py-1 transition-colors hover:bg-amber-50"
+            className="flex min-w-0 items-center gap-2 rounded-2xl px-2 py-1.5 transition-colors hover:bg-amber-50 active:scale-[0.98] sm:gap-2.5 sm:rounded-xl sm:px-1 sm:py-1 lg:active:scale-100"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 shadow-sm sm:h-10 sm:w-10">
-              <HardHat className="size-5 text-white sm:size-6" />
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 shadow-[0_8px_20px_rgba(245,158,11,0.28)] sm:h-12 sm:w-12 lg:h-10 lg:w-10 lg:rounded-xl lg:shadow-sm">
+              <HardHat className="size-6 text-white lg:size-6" />
             </div>
-            <span className="truncate text-[17px] font-extrabold tracking-tight text-neutral-900 sm:text-lg">
+            <span className="truncate text-[22px] font-black tracking-tight text-neutral-950 sm:text-[22px] lg:text-lg lg:font-extrabold">
               {t("appName")}
             </span>
           </Link>
@@ -252,36 +251,34 @@ export function Navbar() {
           </div>
 
           {/* ── Mobile right actions (< lg) ────────────────────── */}
-          <div className="flex items-center gap-2 lg:hidden">
-            {/* Language toggle — compact icon only */}
+          <div className="flex shrink-0 items-center gap-2 lg:hidden">
             <button
               onClick={toggleLanguage}
               aria-label="تغيير اللغة"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 text-neutral-600 transition-all hover:bg-amber-50 hover:text-amber-700"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-neutral-200/80 bg-white text-neutral-700 shadow-sm transition-all hover:bg-amber-50 hover:text-amber-700 active:scale-95 sm:h-12 sm:w-12 lg:h-10 lg:w-10 lg:rounded-xl"
             >
-              <Globe2 className="size-4" />
+              <Globe2 className="size-5" />
             </button>
 
-            {/* Notification badge shortcut */}
             {isAuthenticated && unreadNotificationCount > 0 && (
               <Link
                 to="/notifications"
-                className="relative inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100"
+                aria-label={t("notifications")}
+                className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-neutral-200/80 bg-white text-neutral-700 shadow-sm transition-all hover:bg-neutral-50 active:scale-95 sm:h-12 sm:w-12 lg:h-10 lg:w-10 lg:rounded-xl"
               >
-                <Bell className="size-4" />
-                <span className="absolute right-1 top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white">
+                <Bell className="size-5" />
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full border-2 border-white bg-red-500 px-1 text-[10px] font-black text-white shadow-sm">
                   {unreadNotificationCount > 9 ? "9+" : unreadNotificationCount}
                 </span>
               </Link>
             )}
 
-            {/* Hamburger */}
             <button
               onClick={() => setDrawerOpen(true)}
               aria-label="فتح القائمة"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-700 transition-colors hover:bg-neutral-100 active:bg-neutral-200"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-900 text-white shadow-[0_10px_24px_rgba(15,23,42,0.18)] transition-all hover:bg-neutral-800 active:scale-95 sm:h-12 sm:w-12 lg:h-10 lg:w-10 lg:rounded-xl"
             >
-              <Menu className="size-5" />
+              <Menu className="size-6" />
             </button>
           </div>
         </div>
@@ -291,18 +288,16 @@ export function Navbar() {
       <AnimatePresence>
         {drawerOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[60] bg-neutral-900/40 backdrop-blur-[2px] lg:hidden"
+              className="fixed inset-0 z-[60] bg-neutral-950/45 backdrop-blur-sm lg:hidden"
               aria-hidden="true"
             />
 
-            {/* Drawer panel */}
             <motion.div
               key="drawer"
               ref={drawerRef}
@@ -310,68 +305,68 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
-              className="fixed inset-y-0 right-0 z-[70] flex w-[300px] flex-col bg-white shadow-2xl lg:hidden"
+              className="fixed inset-y-0 right-0 z-[70] flex w-[min(88vw,340px)] flex-col overflow-hidden rounded-l-[2rem] bg-white shadow-2xl lg:hidden"
               role="dialog"
               aria-modal="true"
               aria-label="القائمة"
             >
-              {/* Drawer header */}
-              <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-4">
-                <button
-                  onClick={() => setDrawerOpen(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 hover:bg-neutral-100"
-                  aria-label="إغلاق القائمة"
-                >
-                  <X className="size-5" />
-                </button>
-                <Link
-                  to="/"
-                  onClick={() => setDrawerOpen(false)}
-                  className="flex items-center gap-2"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-amber-600">
-                    <HardHat className="size-4 text-white" />
-                  </div>
-                  <span className="text-base font-extrabold text-neutral-900">
-                    {t("appName")}
-                  </span>
-                </Link>
-              </div>
+              <div className="bg-gradient-to-br from-amber-50 via-white to-white px-5 pb-4 pt-5">
+                <div className="flex items-center justify-between gap-3">
+                  <button
+                    onClick={() => setDrawerOpen(false)}
+                    className="flex h-10 w-10 items-center justify-center rounded-2xl border border-neutral-200/80 bg-white text-neutral-600 shadow-sm transition-all hover:bg-neutral-50 active:scale-95"
+                    aria-label="إغلاق القائمة"
+                  >
+                    <X className="size-5" />
+                  </button>
+                  <Link
+                    to="/"
+                    onClick={() => setDrawerOpen(false)}
+                    className="flex min-w-0 items-center gap-2 rounded-2xl px-1 py-1 active:scale-[0.98]"
+                  >
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 shadow-[0_8px_20px_rgba(245,158,11,0.25)]">
+                      <HardHat className="size-5 text-white" />
+                    </div>
+                    <span className="truncate text-lg font-black text-neutral-950">
+                      {t("appName")}
+                    </span>
+                  </Link>
+                </div>
 
-              {/* User section (if authenticated) */}
-              {isAuthenticated && (
-                <div className="border-b border-neutral-100 px-5 py-4">
+                {isAuthenticated && (
                   <Link
                     to="/profile"
                     onClick={() => setDrawerOpen(false)}
-                    className="flex items-center gap-3"
+                    className="mt-5 flex items-center gap-3 rounded-3xl border border-amber-100 bg-white/80 p-3 shadow-sm backdrop-blur-sm active:scale-[0.99]"
                   >
-                    <div className="relative size-11 overflow-hidden rounded-full ring-2 ring-amber-200">
+                    <div className="relative size-12 overflow-hidden rounded-2xl ring-2 ring-amber-200 ring-offset-2 ring-offset-white">
                       <img
                         src={avatar}
                         alt=""
                         className="h-full w-full object-cover"
                       />
                     </div>
-                    <div>
-                      <p className="text-sm font-bold text-neutral-800">
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-black text-neutral-900">
                         {user?.firstName || user?.name || "المستخدم"}
                         {user?.lastName ? ` ${user.lastName}` : ""}
                       </p>
-                      <p className="text-xs text-neutral-500">
+                      <p className="mt-0.5 truncate text-xs font-medium text-neutral-500">
                         {user?.role || "عضو"}
                       </p>
                     </div>
                   </Link>
-                </div>
-              )}
+                )}
+              </div>
 
-              {/* Nav links */}
-              <nav className="flex-1 overflow-y-auto px-3 py-3" aria-label="app menu">
-                <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-widest text-neutral-400">
+              <nav
+                className="flex-1 overflow-y-auto px-4 py-4"
+                aria-label="app menu"
+              >
+                <p className="mb-3 px-2 text-[11px] font-black uppercase tracking-widest text-neutral-400">
                   التنقل
                 </p>
-                <ul className="space-y-0.5">
+                <ul className="space-y-1.5">
                   {navItems.map(({ to, label, icon: Icon, badge }) => (
                     <li key={to}>
                       <NavLink
@@ -380,10 +375,10 @@ export function Navbar() {
                         onClick={() => setDrawerOpen(false)}
                         className={({ isActive }) =>
                           cn(
-                            "flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold transition-all",
+                            "flex min-h-12 items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-bold transition-all active:scale-[0.99]",
                             isActive
-                              ? "bg-amber-50 text-amber-700"
-                              : "text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900"
+                              ? "bg-amber-50 text-amber-700 shadow-[inset_0_0_0_1px_rgba(245,158,11,0.16)]"
+                              : "text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950"
                           )
                         }
                       >
@@ -391,18 +386,18 @@ export function Navbar() {
                           <>
                             <span
                               className={cn(
-                                "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg",
+                                "flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl transition-all",
                                 isActive
                                   ? "bg-amber-100 text-amber-700"
                                   : "bg-neutral-100 text-neutral-500"
                               )}
                             >
-                              <Icon className="size-4" />
+                              <Icon className="size-[18px]" />
                             </span>
-                            <span className="flex-1">{label}</span>
+                            <span className="min-w-0 flex-1 truncate">{label}</span>
                             {badge ? (
-                              <span className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-red-500 px-1.5 text-[10px] font-bold text-white">
-                                {badge}
+                              <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-red-500 px-2 text-[10px] font-black text-white shadow-sm">
+                                {badge > 9 ? "9+" : badge}
                               </span>
                             ) : null}
                           </>
@@ -413,14 +408,13 @@ export function Navbar() {
                 </ul>
               </nav>
 
-              {/* Drawer footer */}
-              <div className="border-t border-neutral-100 px-4 py-4 space-y-2">
+              <div className="border-t border-neutral-100 bg-neutral-50/70 px-4 py-4">
                 {isAuthenticated ? (
                   <button
                     onClick={handleLogout}
-                    className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 transition-all"
+                    className="flex min-h-12 w-full items-center gap-3 rounded-2xl border border-red-100 bg-white px-3 py-3 text-sm font-bold text-red-600 shadow-sm transition-all hover:bg-red-50 active:scale-[0.99]"
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-red-50">
                       <LogOut className="size-4" />
                     </span>
                     {t("logout")}
@@ -430,14 +424,14 @@ export function Navbar() {
                     <Link
                       to="/login"
                       onClick={() => setDrawerOpen(false)}
-                      className="flex items-center justify-center rounded-xl border border-neutral-200 py-2.5 text-sm font-semibold text-neutral-700 hover:bg-neutral-50"
+                      className="flex min-h-12 items-center justify-center rounded-2xl border border-neutral-200 bg-white px-3 py-3 text-sm font-bold text-neutral-700 shadow-sm transition-all hover:bg-neutral-50 active:scale-[0.99]"
                     >
                       {t("login")}
                     </Link>
                     <Link
                       to="/register/type"
                       onClick={() => setDrawerOpen(false)}
-                      className="flex items-center justify-center rounded-xl bg-gradient-to-b from-amber-500 to-amber-600 py-2.5 text-sm font-semibold text-white shadow-sm hover:from-amber-600 hover:to-amber-700"
+                      className="flex min-h-12 items-center justify-center rounded-2xl bg-gradient-to-b from-amber-500 to-amber-600 px-3 py-3 text-sm font-bold text-white shadow-[0_10px_24px_rgba(245,158,11,0.25)] transition-all hover:from-amber-600 hover:to-amber-700 active:scale-[0.99]"
                     >
                       {t("register")}
                     </Link>
@@ -452,9 +446,9 @@ export function Navbar() {
       {/* ── Mobile Bottom Tab Bar (fixed, always visible, < lg) ── */}
       <nav
         aria-label="bottom navigation"
-        className="safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200/80 bg-white/97 backdrop-blur-xl lg:hidden"
+        className="safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-neutral-100/80 bg-white/95 px-2 pb-2 pt-3 shadow-[0_-12px_34px_rgba(15,23,42,0.1)] backdrop-blur-2xl lg:hidden"
       >
-        <div className="mx-auto flex h-[60px] max-w-[430px] items-center justify-around px-1 sm:max-w-screen-sm">
+        <div className="mx-auto flex h-[78px] max-w-[430px] items-center justify-between rounded-[1.75rem] border border-neutral-100 bg-white px-1.5 shadow-sm sm:h-[78px] sm:max-w-screen-sm sm:rounded-3xl sm:px-2">
           {bottomTabItems.map(({ to, label, icon: Icon, badge }) => (
             <NavLink
               key={to}
@@ -462,9 +456,9 @@ export function Navbar() {
               end={to === "/"}
               className={({ isActive }) =>
                 cn(
-                  "relative flex min-w-[56px] flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1.5 text-[10px] font-semibold transition-all duration-150",
+                  "relative flex min-w-[62px] flex-1 flex-col items-center justify-center gap-1 rounded-2xl px-1 py-2 text-[13px] font-black transition-all duration-300 sm:min-w-[56px] sm:text-[13px] sm:font-bold",
                   isActive
-                    ? "text-amber-600"
+                    ? "bg-amber-50 text-amber-700"
                     : "text-neutral-400 hover:text-neutral-700 active:scale-95"
                 )
               }
@@ -473,20 +467,25 @@ export function Navbar() {
                 <>
                   <span
                     className={cn(
-                      "flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-150",
-                      isActive ? "bg-amber-100" : ""
+                      "flex h-10 w-10 items-center justify-center rounded-2xl transition-all duration-300 sm:h-10 sm:w-10",
+                      isActive
+                        ? "bg-amber-100 text-amber-700 shadow-inner"
+                        : "text-neutral-400"
                     )}
                   >
                     <Icon
                       className={cn(
-                        "size-[18px]",
-                        isActive ? "text-amber-600" : "text-neutral-400"
+                        "size-[26px] transition-transform duration-300 sm:size-[26px]",
+                        isActive ? "scale-110 text-amber-700" : "text-neutral-400"
                       )}
+                      strokeWidth={isActive ? 2.6 : 2.1}
                     />
                   </span>
-                  <span className="leading-none">{label}</span>
+                  <span className="max-w-[68px] truncate leading-none tracking-wide">
+                    {label}
+                  </span>
                   {badge ? (
-                    <span className="absolute right-2 top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-white">
+                    <span className="absolute right-2 top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-white bg-red-500 px-1 text-[9px] font-black text-white shadow-sm">
                       {badge > 9 ? "9+" : badge}
                     </span>
                   ) : null}

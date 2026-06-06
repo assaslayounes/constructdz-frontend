@@ -1,6 +1,6 @@
 export const translations = {
   ar: {
-    appName: "إنجاز 24",
+    appName: "إنجاز",
     login: "دخول",
     register: "تسجيل",
     logout: "خروج",
@@ -115,7 +115,7 @@ export const translations = {
     editContractError: "فشل تحديث بيانات العقد"
   },
   en: {
-    appName: "Injaz 24",
+    appName: "Injaz",
     login: "Login",
     register: "Register",
     logout: "Logout",
