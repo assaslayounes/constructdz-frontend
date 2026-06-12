@@ -67,7 +67,7 @@ export function RegisterOtpPage() {
     <section className="relative min-h-screen bg-brand-bg pb-24">
       <div className="auth-container pt-2 sm:pt-4">
         <Link to="/register/account" state={state} className="absolute left-5 top-5 sm:left-8 sm:top-7"><ArrowLeft className="size-7 text-brand-brown sm:size-8" /></Link>
-        <h1 className="text-center text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز 24</h1>
+        <h1 className="text-center text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز</h1>
         <div className="mx-auto mt-12 w-fit rounded-full bg-[#ffd9c4] px-6 py-2.5 text-lg text-brand-brown sm:mt-16 sm:px-8 sm:py-3 sm:text-xl">الخطوة 4 من 4</div>
         <div className="mx-auto mt-12 grid size-28 place-items-center rounded-[34px] bg-[#fee5d7] text-brand-brown sm:mt-16 sm:size-36 sm:rounded-[42px]"><ShieldCheck className="size-12 sm:size-16" /></div>
         <h2 className="mt-12 text-center text-4xl text-black sm:mt-16 sm:text-6xl">تأكيد الرمز</h2>

@@ -6,7 +6,7 @@ export function RegisterSuccessPage() {
   return (
     <section className="min-h-screen bg-dot py-4">
       <div className="auth-container">
-        <h1 className="text-right text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز 24</h1>
+        <h1 className="text-right text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز</h1>
         <div className="soft-card mt-14 px-5 py-8 text-center sm:mt-24 sm:px-10 sm:py-12">
           <div className="mx-auto grid size-28 place-items-center rounded-full bg-brand-orange text-white shadow-xl sm:size-36"><Check className="size-14 sm:size-20" /></div>
           <h2 className="mt-10 text-4xl leading-[1.25] text-black sm:mt-16 sm:text-5xl">تم إنشاء الحساب<br />بنجاح!</h2>

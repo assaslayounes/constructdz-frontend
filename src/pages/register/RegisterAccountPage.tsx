@@ -27,7 +27,7 @@ export function RegisterAccountPage() {
     <section className="relative min-h-screen bg-dot pb-24">
       <div className="auth-container pt-2 sm:pt-4">
         <Link to="/register/personal" state={location.state} className="absolute left-5 top-5 sm:left-8 sm:top-7"><ArrowLeft className="size-7 text-brand-brown sm:size-8" /></Link>
-        <h1 className="text-center text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز 24</h1>
+        <h1 className="text-center text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز</h1>
         <div className="mt-14 sm:mt-24"><StepIndicator current={3} labels={["البيانات", "الخطة", "الحساب", "التأكيد"]} /></div>
         <form onSubmit={handleSubmit(onSubmit)} className="soft-card mt-12 px-5 py-8 sm:mt-20 sm:px-10 sm:py-14">
           <h2 className="text-right text-4xl text-black sm:text-5xl">معلومات الحساب</h2>

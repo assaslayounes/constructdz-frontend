@@ -55,10 +55,10 @@ export function MarketplacePage({ kind }: { kind: MarketplaceKind }) {
 
   const title = kind === "equipment" ? t("equipment") : kind === "providers" ? t("providers") : t("projects");
   const description = kind === "equipment"
-    ? "Search rentable equipment by type, category, wilaya, availability, rating, price, and date added."
+    ? "ابحث عن المعدات المتاحة للإيجار حسب النوع، الفئة، الولاية، التوفر، التقييم، السعر، وتاريخ الإضافة."
     : kind === "providers"
-      ? "Find qualified providers by profession, service type, wilaya, experience, rating, and price range."
-      : "Browse construction projects by status, wilaya, budget range, and creation date.";
+      ? "ابحث عن المهنيين المؤهلين حسب المهنة، نوع الخدمة، الولاية، الخبرة، التقييم، ونطاق السعر."
+      : "تصفح مشاريع البناء حسب الحالة، الولاية، نطاق الميزانية، وتاريخ الإنشاء.";
 
   return (
     <section className="content-container">

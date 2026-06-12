@@ -12,7 +12,7 @@ export function AuthBrand() {
       </div>
 
       <h1 className="text-center text-[48px] font-light leading-none tracking-wide sm:text-5xl lg:text-6xl">
-        إنجاز 24
+        إنجاز
       </h1>
 
       <p className="mt-7 max-w-3xl text-center text-[18px] leading-8 text-white/95 sm:mt-7 sm:text-xl sm:leading-9 lg:text-2xl">

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 const schema = z.object({
   firstName: z.string().min(2, "يرجى إدخال الاسم"),
   lastName: z.string().min(2, "يرجى إدخال اللقب"),
-  phone: z.string().regex(/^5\d{8}$/, "رقم الهاتف يجب أن يبدأ بـ 5 ويتكون من 9 أرقام"),
+  phone: z.string().regex(/^[567]\d{8}$/, "رقم الهاتف يجب أن يبدأ بـ 5 أو 6 أو 7 ويتكون من 9 أرقام"),
   address: z.string().min(8, "يرجى إدخال عنوان الإقامة")
 });
 
@@ -36,7 +36,7 @@ export function RegisterPersonalInfoPage() {
   });
 
   function onSubmit(values: FormValues) {
-    navigate("/register/account", { state: { ...state, ...values, phone: `+966${values.phone}` } });
+    navigate("/register/account", { state: { ...state, ...values, phone: `+213${values.phone}` } });
   }
 
   return (
@@ -46,7 +46,7 @@ export function RegisterPersonalInfoPage() {
           <Link to="/register/type" state={state} aria-label="رجوع" className="absolute right-0 top-2 text-[#3b2419]">
             <ArrowLeft className="size-8" />
           </Link>
-          <h1 className="text-center text-[42px] font-semibold leading-none text-brand-brown">إنجاز 24</h1>
+          <h1 className="text-center text-[42px] font-semibold leading-none text-brand-brown">إنجاز</h1>
         </header>
 
         <RegisterProgress />
@@ -72,9 +72,9 @@ export function RegisterPersonalInfoPage() {
             <FieldLabel label="رقم الهاتف" />
             <div className="flex h-[66px] items-center rounded-[14px] border border-brand-border bg-white px-5 text-[#7f6253]">
               <Phone className="size-7 shrink-0" />
-              <input {...register("phone")} inputMode="numeric" className="h-full min-w-0 flex-1 bg-transparent px-5 text-left text-lg outline-none placeholder:text-[#987866]" placeholder="5X XXX XXXX" />
+              <input {...register("phone")} inputMode="numeric" className="h-full min-w-0 flex-1 bg-transparent px-5 text-left text-lg outline-none placeholder:text-[#987866]" placeholder="6X XXX XXXX" />
               <span className="h-8 w-px bg-brand-border" />
-              <span className="pl-5 text-xl text-[#3b2419]">966+</span>
+              <span className="pl-5 text-xl text-[#3b2419]">213+</span>
             </div>
             {errors.phone && <ErrorMessage message={errors.phone.message} />}
 
