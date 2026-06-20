@@ -19,6 +19,7 @@ import { useAuthState } from "@/context/AuthContext";
 import { useI18n } from "@/i18n/I18nContext";
 import { resourcesService } from "@/services/resources.service";
 import { cn } from "@/lib/utils";
+import { HelpDialog } from "@/components/common/HelpDialog";
 
 export function Navbar() {
   const { isAuthenticated, logout, user } = useAuthState();
@@ -192,6 +193,7 @@ export function Navbar() {
 
           {/* ── Desktop right-side actions (lg+) ──────────────── */}
           <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-2.5">
+            <HelpDialog variant="navbar" />
             <button
               onClick={toggleLanguage}
               className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 px-3 py-1.5 text-sm font-semibold text-neutral-600 transition-all hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700"
@@ -252,6 +254,7 @@ export function Navbar() {
 
           {/* ── Mobile right actions (< lg) ────────────────────── */}
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
+            <HelpDialog variant="navbar-mobile" />
             <button
               onClick={toggleLanguage}
               aria-label="تغيير اللغة"
@@ -409,6 +412,9 @@ export function Navbar() {
               </nav>
 
               <div className="border-t border-neutral-100 bg-neutral-50/70 px-4 py-4">
+                <div className="mb-3">
+                  <HelpDialog variant="drawer" />
+                </div>
                 {isAuthenticated ? (
                   <button
                     onClick={handleLogout}

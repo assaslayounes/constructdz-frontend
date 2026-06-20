@@ -3,20 +3,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, HardHat, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StepIndicator } from "@/components/auth/StepIndicator";
+import { HelpDialog } from "@/components/common/HelpDialog";
 import type { AccountType } from "@/types/domain";
 
 export function RegisterTypePage() {
   const [role, setRole] = useState<AccountType>("owner");
   const navigate = useNavigate();
   const cards = [
-    { id: "owner" as const, title: "صاحب مشروع", icon: <HardHat className="size-8 sm:size-10" />, text: "أرغب في طرح مناقصات، إدارة مشاريع البناء الخاصة بي، والعثور على أفضل المقاولين المعتمدين." },
-    { id: "provider" as const, title: "مزود خدمة", icon: <Wrench className="size-8 sm:size-10" />, text: "أنا مقاول أو مهندس أو مكتب استشاري أبحث عن فرص عمل جديدة وتوسيع نطاق أعمالي في السوق." }
+    {
+      id: "owner" as const,
+      title: "صاحب مشروع",
+      icon: <HardHat className="size-8 sm:size-10" />,
+      text: "إذا كنت صاحب مشروع، شركة إنجاز، مؤسسة أشغال عمومية، أو جهة تبحث عن حرفيين مؤهلين، مقاولين، أو مختلف معدات وآليات البناء لإنجاز أعمالك بكفاءة وفي الوقت المناسب، فهذا النوع هو الخيار المناسب لك."
+    },
+    {
+      id: "provider" as const,
+      title: "مزود خدمة",
+      icon: <Wrench className="size-8 sm:size-10" />,
+      text: "إذا كنت صاحب حرفة مثل البناء، الدهان، النجارة، الحدادة، السياقة أو غيرها، أو تملك معدات وآليات مثل الحفارات، الحاملات، الجرارات، الشاحنات، خلاطات الإسمنت وغيرها، وتبحث عن فرص عمل جديدة أو ترغب في تأجير معداتك وتحقيق دخل إضافي، فاختر هذا النوع."
+    }
   ];
 
   return (
     <section className="relative min-h-screen bg-brand-bg pb-24">
       <div className="auth-container pt-2 sm:pt-4">
         <Link to="/login" className="absolute left-5 top-5 sm:left-7 sm:top-7"><ArrowLeft className="size-7 text-brand-brown" /></Link>
+        <div className="absolute right-5 top-5 sm:right-7 sm:top-7">
+          <HelpDialog variant="auth" />
+        </div>
         <h1 className="text-center text-4xl font-bold text-brand-brown sm:text-5xl lg:text-6xl">إنجاز</h1>
         <div className="mt-12 sm:mt-16"><StepIndicator current={1} labels={["نوع الحساب", "البيانات", "التحقق"]} /></div>
         <div className="mt-14 text-center sm:mt-20"><h2 className="text-4xl text-black sm:text-5xl">نوع الحساب</h2><p className="mt-4 text-base sm:mt-5 sm:text-xl">يرجى اختيار الفئة التي تصف نشاطك بشكل أفضل</p></div>

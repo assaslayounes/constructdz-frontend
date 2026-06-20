@@ -112,7 +112,8 @@ export const translations = {
     save: "حفظ",
     cancel: "إلغاء",
     editContractSuccess: "تم تحديث بيانات العقد بنجاح",
-    editContractError: "فشل تحديث بيانات العقد"
+    editContractError: "فشل تحديث بيانات العقد",
+    help: "مساعدة"
   },
   en: {
     appName: "Injaz",
@@ -227,7 +228,8 @@ export const translations = {
     save: "Save",
     cancel: "Cancel",
     editContractSuccess: "Contract updated successfully",
-    editContractError: "Failed to update contract"
+    editContractError: "Failed to update contract",
+    help: "Help"
   }
 } as const;
 

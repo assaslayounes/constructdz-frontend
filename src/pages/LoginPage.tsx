@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuthState } from "@/context/AuthContext";
 import { useLogin } from "@/hooks/useAuth";
+import { HelpDialog } from "@/components/common/HelpDialog";
 
 const schema = z.object({
   identifier: z.string().min(3, "يرجى إدخال بريد أو رقم صحيح"),
@@ -35,6 +36,11 @@ export function LoginPage() {
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#fff7f2] text-[#4a2d20]">
+      {/* Help Button */}
+      <div className="absolute left-5 top-5 z-20 sm:left-7 sm:top-7">
+        <HelpDialog variant="auth" />
+      </div>
+
       <AuthBrand />
 
       <main className="relative z-10 flex flex-col items-center px-5 pb-8">
